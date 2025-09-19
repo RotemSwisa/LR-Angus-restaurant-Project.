@@ -62,7 +62,7 @@ It was created as part of the Web Applications Development course in collaborati
 
 🔗 **Link to my LinkedIn profile** www.linkedin.com/in/rotem-swisa-10b675382
 
-🔗 **Link to the team member's LinkedIn profile** www.linkedin.com/in/%D7%9C%D7%99%D7%93%D7%95%D7%A8-%D7%91%D7%9F-%D7%A1%D7%99%D7%9E%D7%95%D7%9F-281576384/
+🔗 **Link to the team member's LinkedIn profile** www.linkedin.com/in/לידור-בן-סימון-281576384/
 
 ## _License_
 This project was created for educational purposes as part of the Web Applications Development course.
