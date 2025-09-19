@@ -56,9 +56,13 @@ It was created as part of the Web Applications Development course in collaborati
 
 
 ## _Authors_
-- **Rotem Swisa** – Frontend development, UI/UX design, project structuring
+- **Rotem Swisa** – Frontend development, UI/UX design, project structuring 
 - **Lidor Ben Simon** – Backend development, database integration, debugging
 - **Joint Work:** Database design, research, feature planning, testing
+
+🔗 Link to my LinkedIn profile www.linkedin.com/in/rotem-swisa-10b675382
+
+🔗 Link to the team member's LinkedIn profile www.linkedin.com/in/%D7%9C%D7%99%D7%93%D7%95%D7%A8-%D7%91%D7%9F-%D7%A1%D7%99%D7%9E%D7%95%D7%9F-281576384/
 
 ## _License_
 This project was created for educational purposes as part of the Web Applications Development course.
