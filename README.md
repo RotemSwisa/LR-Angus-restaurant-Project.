@@ -1,4 +1,4 @@
-# LR-Angus Restaurant Website
+# LR-Angus Restaurant Website <img width="79" height="79" alt="image" src="https://github.com/user-attachments/assets/8096e122-f4d4-4e12-840b-3a87f29ec54c" />
 
 ## _Overview_
 LR-Angus is a restaurant web application that provides users with an interactive dining experience.
@@ -60,9 +60,9 @@ It was created as part of the Web Applications Development course in collaborati
 - **Lidor Ben Simon** – Backend development, database integration, debugging
 - **Joint Work:** Database design, research, feature planning, testing
 
-🔗 Link to my LinkedIn profile www.linkedin.com/in/rotem-swisa-10b675382
+🔗 **Link to my LinkedIn profile** www.linkedin.com/in/rotem-swisa-10b675382
 
-🔗 Link to the team member's LinkedIn profile www.linkedin.com/in/%D7%9C%D7%99%D7%93%D7%95%D7%A8-%D7%91%D7%9F-%D7%A1%D7%99%D7%9E%D7%95%D7%9F-281576384/
+🔗 **Link to the team member's LinkedIn profile** www.linkedin.com/in/%D7%9C%D7%99%D7%93%D7%95%D7%A8-%D7%91%D7%9F-%D7%A1%D7%99%D7%9E%D7%95%D7%9F-281576384/
 
 ## _License_
 This project was created for educational purposes as part of the Web Applications Development course.
