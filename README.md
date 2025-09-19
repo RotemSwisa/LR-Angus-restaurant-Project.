@@ -14,29 +14,28 @@ It was created as part of the Web Applications Development course in collaborati
 
 
 ## _Technologies Used_
-- Frontend: Angular, TypeScript, HTML, CSS, Bootstrap
-- Backend: Node.js
-- Database: MySQL
+- **Frontend:** Angular, TypeScript, HTML, CSS, Bootstrap
+- **Backend:** Node.js
+- **Database:** MySQL
 
 
 ## _Installation & Setup_
-1.	**Clone the repository:** 
-- [git clone https://github.com/YourUsername/LR-Angus-Restaurant.git](url)
-2.	**Backend setup (Node.js): **
-- cd lr-angus-server
- - npm install
- - node server.js
-3.	**Frontend setup (Angular):**
+1.	**_Clone the repository:_** [git clone https://github.com/YourUsername/LR-Angus-Restaurant.git](url)
+2.	**_Backend setup (Node.js):_**
+   - cd lr-angus-server
+   - npm install
+   - node server.js     
+3.	**_Frontend setup (Angular):_**
   - cd lr-angus-client
   - npm install
-  - ng serve    
-**Access the website at:** http://localhost:4200/
-4.	**Database setup (MySQL):**
+  - ng serve
+  - **Access the website at:** http://localhost:4200/
+4.	**_Database setup (MySQL):_**
 - Import the restaurant_db.sql file into your MySQL server.
 - Update database credentials in lr-angus-server/config/database.js.
 
-ℹ️ **In addition to this README, there is a dedicated file "הסברים על פרויקט סוף קובץ README.pdf" which provides full explanations of the processes, architecture, and functionalities of the project.**
-
+> [!NOTE]
+> In addition to this README, there is a dedicated file "הסברים על פרויקט סוף קובץ README.pdf" which provides full explanations of the processes, architecture, and functionalities of the project.
 
 
 ## _Additional Files in Repository_
