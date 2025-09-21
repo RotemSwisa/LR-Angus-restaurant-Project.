@@ -1,4 +1,4 @@
-# LR-Angus Restaurant Website <img width="79" height="79" alt="image" src="https://github.com/user-attachments/assets/8096e122-f4d4-4e12-840b-3a87f29ec54c" />
+# LR-Angus Restaurant Website <img width="65" height="79" alt="image" src="https://github.com/user-attachments/assets/8096e122-f4d4-4e12-840b-3a87f29ec54c" />
 
 ## _Overview_
 LR-Angus is a restaurant web application that provides users with an interactive dining experience.
