@@ -64,5 +64,7 @@ It was created as part of the Web Applications Development course in collaborati
 
 🔗 **Link to the team member's LinkedIn profile** www.linkedin.com/in/לידור-בן-סימון-281576384/
 
+🔗 **Feel free to visit his GitHub to check out his projects too** https://github.com/LidorBenSimon
+
 ## _License_
 This project was created for educational purposes as part of the Web Applications Development course.
