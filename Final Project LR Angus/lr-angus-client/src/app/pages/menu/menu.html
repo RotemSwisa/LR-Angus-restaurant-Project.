@@ -1,0 +1,70 @@
+<!-- אינדיקטור טעינה -->
+<div *ngIf="isLoading" class="loading-container">
+  <div class="loading-spinner"></div>
+  <p>טוען את המנות מהשרת...</p>
+</div>
+
+<!-- הודעת שגיאה -->
+<div *ngIf="errorMessage && !isLoading" class="error-container">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<!-- סרגל ניווט העליון -->
+<app-navbar></app-navbar>
+
+<!-- כותרת עמוד -->
+<div class="menu-header">
+  <div class="container">
+    <h1><i class="fas fa-book-open"></i> תפריט המסעדה</h1>
+    <p class="lead">התענגו על מבחר הנתחים המובחרים והמנות הטעימות שלנו</p>
+  </div>
+</div>
+
+<!-- פילטרים על פי קטגוריות -->
+<div class="menu-filters">
+  <button class="filter-btn" [ngClass]="{ active: selectedCategory === 'all' }" (click)="setCategory('all')">הכל</button>
+  <button class="filter-btn" [ngClass]="{ active: selectedCategory === 'starters' }" (click)="setCategory('starters')">מנות פתיחה</button>
+  <button class="filter-btn" [ngClass]="{ active: selectedCategory === 'mains' }" (click)="setCategory('mains')">מנות עיקריות</button>
+  <button class="filter-btn" [ngClass]="{ active: selectedCategory === 'steaks' }" (click)="setCategory('steaks')">סטייקים</button>
+  <button class="filter-btn" [ngClass]="{ active: selectedCategory === 'sides' }" (click)="setCategory('sides')">תוספות</button>
+  <button class="filter-btn" [ngClass]="{ active: selectedCategory === 'desserts' }" (click)="setCategory('desserts')">קינוחים</button>
+  <button class="filter-btn" [ngClass]="{ active: selectedCategory === 'drinks' }" (click)="setCategory('drinks')">משקאות</button>
+</div>
+
+<!-- קטגוריות תפריט -->
+<div class="container" *ngFor="let category of ['starters', 'mains', 'steaks', 'sides', 'desserts', 'drinks']">
+  <div class="menu-category" [id]="category">
+    <h2>
+      <i class="fas" [ngClass]="{
+        'fa-cheese': category === 'starters',
+        'fa-hamburger': category === 'mains',
+        'fa-drumstick-bite': category === 'steaks',
+        'fa-carrot': category === 'sides',
+        'fa-ice-cream': category === 'desserts',
+        'fa-wine-glass-alt': category === 'drinks'
+      }"></i>
+      {{ getCategoryTitle(category) }}
+    </h2>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let item of getItemsByCategory(category)">
+        <div class="menu-item">
+          <span class="tag tag-popular" *ngIf="item.tags?.includes('popular')">פופולרי</span>
+          <span class="tag tag-new" *ngIf="item.tags?.includes('new')">חדש</span>
+          <img [src]="item.image" [alt]="item.title" class="menu-item-image" />
+          <h3>{{ item.title }}</h3>
+          <p class="menu-item-description">{{ item.description }}</p>
+          <p class="menu-item-price">{{ item.price }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- כפתור חזרה למעלה -->
+<a class="back-to-top" *ngIf="showBackToTop" (click)="scrollToTop()">
+  <i class="fas fa-arrow-up"></i>
+</a>
+
+<!-- רכיב הפוטר -->
+<app-footer></app-footer>

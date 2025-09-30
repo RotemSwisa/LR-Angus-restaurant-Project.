@@ -1,0 +1,26 @@
+<!-- פרטי יצירת קשר -->
+<div class="container">
+  <div class="contact-info">
+    <div class="contact-info-item">
+      <i class="fas fa-phone"></i>
+      <h3>טלפון</h3>
+      <p>{{ contactInfo.phone }}</p>
+    </div>
+    <div class="contact-info-item">
+      <i class="fas fa-envelope"></i>
+      <h3>מייל</h3>
+      <p>{{ contactInfo.email }}</p>
+    </div>
+    <div class="contact-info-item">
+      <i class="far fa-clock"></i>
+      <h3>שעות פתיחה</h3>
+      <p>{{ contactInfo.hours.weekdays }}</p>
+      <p>{{ contactInfo.hours.saturday }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- זכויות יוצרים -->
+<footer class="text-white text-center py-3 mt-5">
+  <p>כל הזכויות שמורות LR-Angus © {{ currentYear }}</p>
+</footer>

@@ -1,0 +1,183 @@
+<!-- אינדיקטור טעינה -->
+<div *ngIf="isLoading" class="loading-container">
+  <div class="loading-spinner"></div>
+  <p>טוען את המנות מהשרת...</p>
+</div>
+
+<!-- הודעת שגיאה -->
+<div *ngIf="errorMessage && !isLoading" class="error-container">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<!-- סרגל ניווט העליון -->
+<app-navbar></app-navbar>
+
+<!-- כותרת העמוד -->
+<div class="reservation-subtitle">
+  <div class="container">
+    <h1><i class="far fa-calendar-alt"></i> הזמנת מקום במסעדה</h1>
+    <p class="subtitle">נשמח לארח אתכם. מלאו את הפרטים וצוות המסעדה יצור קשר לאישור.</p>
+  </div>
+</div>
+
+<!-- טופס הזמנה -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-7">
+      <div class="reservation-form-container">
+        <form (ngSubmit)="submitForm()">
+          <!-- סניף -->
+          <div class="mb-4">
+            <label class="form-label"><i class="fas fa-map-marker-alt"></i> בחירת סניף</label>
+            <select class="form-control" [(ngModel)]="branch" name="branch" required>
+              <option value="">בחר סניף</option>
+              <option>בית שאן</option>
+              <option>טבריה</option>
+              <option>עפולה</option>
+              <option>חיפה</option>
+              <option>נתניה</option>
+            </select>
+          </div>
+
+          <!-- תאריך + שעה -->
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <label class="form-label"><i class="far fa-calendar"></i> תאריך</label>
+              <input type="date" class="form-control" [(ngModel)]="date" name="date" [min]="today" (change)="onDateOrGuestsChange()" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><i class="far fa-clock"></i> שעה</label>
+              <select class="form-control" [(ngModel)]="time" name="time" required>
+                <option value="">בחר שעה</option>
+                <option *ngFor="let t of availableTimes" [value]="t">{{ t }}</option>
+              </select>
+              <small class="text-muted" *ngIf="isLoading">טוען זמנים זמינים...</small>
+              <small class="text-warning" *ngIf="availableTimes.length === 0 && !isLoading">
+                אין זמנים זמינים לתאריך ומספר הסועדים שנבחרו
+              </small>
+            </div>
+          </div>
+
+          <!-- מספר סועדים -->
+          <div class="mb-4">
+            <label class="form-label"><i class="fas fa-users"></i> מספר סועדים</label>
+            <select class="form-control" [(ngModel)]="guests" name="guests" (change)="onDateOrGuestsChange()" required>
+              <option value="">בחר מספר סועדים</option>
+              <option *ngFor="let g of [1,2,3,4,5,6,7,8]" [value]="g">{{ g }}</option>
+              <option value="large">9 ומעלה</option>
+            </select>
+          </div>
+
+          <!-- פרטי קשר -->
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <label class="form-label"><i class="fas fa-user"></i> שם מלא</label>
+              <input type="text" class="form-control" [(ngModel)]="name" name="name" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><i class="fas fa-phone"></i> טלפון</label>
+              <input type="tel" class="form-control" [(ngModel)]="phone" name="phone" placeholder="05xxxxxxxx" pattern="[0-9]{10}" required />
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label"><i class="fas fa-envelope"></i> אימייל</label>
+            <input type="email" class="form-control" [(ngModel)]="email" name="email" />
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label"><i class="fas fa-comment"></i> הערות</label>
+            <textarea class="form-control" [(ngModel)]="notes" name="notes" rows="3"></textarea>
+          </div>
+
+          <!-- הודעת שגיאה -->
+          <div class="alert alert-danger" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+
+          <!-- כפתור שליחה -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-custom btn-lg" [disabled]="isLoading">
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+              {{ isLoading ? 'שולח...' : 'שלח הזמנה' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- מידע ותמונה -->
+    <div class="col-lg-5">
+      <div class="reservation-info-container">
+        <div class="reservation-image">
+          <img src="assets/img/restaurant.jpeg" alt="מסעדה" class="image-banner" />
+        </div>
+        <div class="reservation-info">
+          <h3><i class="fas fa-info-circle"></i> מידע חשוב</h3>
+          <ul>
+            <li>הזמנות מתקבלות עד 3 שעות מראש</li>
+            <li>איחור מעל 15 דקות עלול לגרום לביטול</li>
+            <li>לביטול התקשרו שעתיים מראש</li>
+            <li>9+ סועדים – נא צרו קשר</li>
+          </ul>
+          <h3><i class="fas fa-clock"></i> שעות פעילות</h3>
+            <p>א׳–ה׳: 17:00–23:00</p>
+            <p>מוצ״ש: 21:15–00:15</p>
+            <p>המסעדה סגורה בימי שישי</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- הודעת הצלחה -->
+<div *ngIf="confirmData" class="success-modal">
+  <div class="success-content">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <h3 class="success-title">הזמנתך התקבלה בהצלחה!</h3>
+    <p class="success-message">תודה על ההזמנה! צוות המסעדה יצור קשר לאישור</p>
+    
+    <div class="reservation-details">
+      <div class="detail-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span><strong>סניף:</strong> {{ confirmData.branch }}</span>
+      </div>
+      <div class="detail-item">
+        <i class="far fa-calendar"></i>
+        <span><strong>תאריך:</strong> {{ confirmData.date }}</span>
+      </div>
+      <div class="detail-item">
+        <i class="far fa-clock"></i>
+        <span><strong>שעה:</strong> {{ confirmData.time }}</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-users"></i>
+        <span><strong>מספר סועדים:</strong> {{ confirmData.guests }}</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-table"></i>
+        <span><strong>שולחן מספר:</strong> {{ confirmData.tableNumber }}</span>
+      </div>
+    </div>
+    
+    <div class="order-number">
+      <i class="fas fa-receipt"></i>
+      <span>מספר הזמנה: <strong>{{ confirmData.reservationId }}</strong></span>
+    </div>
+    
+    <div class="success-actions">
+      <button class="btn btn-primary" (click)="goHome()">
+        <i class="fas fa-home"></i> חזרה לדף הבית
+      </button>
+      <button class="btn btn-secondary" (click)="newReservation()">
+        <i class="fas fa-plus"></i> הזמנה חדשה
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- רכיב הפוטר -->
+<app-footer></app-footer>

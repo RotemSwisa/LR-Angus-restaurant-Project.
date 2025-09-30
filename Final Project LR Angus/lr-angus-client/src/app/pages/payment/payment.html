@@ -1,0 +1,156 @@
+<!-- סרגל ניווט העליון -->
+<app-navbar></app-navbar>
+
+<!-- כותרת העמוד -->
+<div class="payment-header">
+  <div class="container">
+    <h1><i class="fas fa-credit-card"></i> תשלום עבור ההזמנה</h1>
+    <p class="subtitle"> השלימו את פרטי התשלום כדי לסיים את ההזמנה </p>
+  </div>
+</div>
+
+<!-- תוכן -->
+<div class="container my-5">
+  <div class="row">
+    <!-- טופס תשלום -->
+    <div class="col-lg-8 mb-4">
+      <div class="payment-section">
+        <h3><i class="fas fa-credit-card"></i> פרטי תשלום</h3>
+        <form (ngSubmit)="completePayment()">
+          <div class="mb-3">
+            <label class="form-label">שם בעל הכרטיס</label>
+            <input class="form-control" [(ngModel)]="card.holder" name="holder" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">מספר כרטיס</label>
+            <input class="form-control" [(ngModel)]="card.number" name="number" required />
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">חודש תפוגה</label>
+              <input class="form-control" [(ngModel)]="card.expiryMonth" name="expiryMonth" placeholder="MM" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">שנת תפוגה</label>
+              <input class="form-control" [(ngModel)]="card.expiryYear" name="expiryYear" placeholder="YY" required />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">CVV</label>
+            <input class="form-control" [(ngModel)]="card.cvv" name="cvv" required />
+          </div>
+          
+          <h4 class="mt-4">פרטי חשבונית</h4>
+          <div class="mb-3">
+            <label class="form-label"> שם לחשבונית </label>
+            <input class="form-control" [(ngModel)]="invoice.name" name="invoiceName" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">ת.ז / ח.פ</label>
+            <input class="form-control" [(ngModel)]="invoice.id" name="invoiceId" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">אימייל לקבלת חשבונית</label>
+            <input class="form-control" [(ngModel)]="invoice.email" name="invoiceEmail" />
+          </div>
+          
+          <button class="btn btn-payment w-100" type="submit" [disabled]="paymentSuccess || isProcessing">
+            <i class="fas fa-credit-card me-2"></i>
+            <span *ngIf="!isProcessing"> בצע תשלום </span>
+            <span *ngIf="isProcessing">מעבד תשלום...</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- סיכום ההזמנה -->
+    <div class="col-lg-4" *ngIf="order">
+      <div class="order-summary-card">
+        <div class="summary-header">
+          <h3><i class="fas fa-clipboard-list"></i> סיכום הזמנה</h3>
+        </div>
+        
+        <!-- פרטי המזמין -->
+        <div class="customer-details-section">
+          <h4><i class="fas fa-user"></i> פרטי המזמין</h4>
+          <div class="customer-info">
+            <div class="info-item">
+              <i class="fas fa-signature"></i>
+              <span class="info-label">שם:</span>
+              <span class="info-value">{{ order.customerName }}</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <span class="info-label">טלפון:</span>
+              <span class="info-value">{{ order.phone }}</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span class="info-label">כתובת:</span>
+              <span class="info-value">{{ order.address }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- פריטים שהוזמנו -->
+        <div class="order-items-section">
+          <h4><i class="fas fa-utensils"></i> פריטים שהוזמנו</h4>
+          <div class="items-list">
+            <div class="order-item" *ngFor="let item of order.cart">
+              <div class="item-image">
+                <img [src]="item.image_url" [alt]="item.name" />
+              </div>
+              <div class="item-details">
+                <div class="item-name">{{ item.name }}</div>
+                <div class="item-quantity">כמות: {{ item.quantity }}</div>
+                <div class="item-price">₪{{ item.price * item.quantity }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- סיכום מחירים -->
+        <div class="price-summary-section">
+          <div class="price-row">
+            <span>סה"כ מוצרים:</span>
+            <span>₪{{ subtotal }}</span>
+          </div>
+          <div class="price-row">
+            <span>דמי משלוח:</span>
+            <span>₪{{ deliveryFee }}</span>
+          </div>
+          <div class="price-row total-row">
+            <span>סה"כ לתשלום:</span>
+            <span>₪{{ total }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- הודעת הצלחה -->
+  <div *ngIf="paymentSuccess" class="success-modal">
+    <div class="success-content">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h3 class="success-title">התשלום התקבל בהצלחה!</h3>
+      <p class="success-message">ההזמנה שלך נקלטה במערכת</p>
+      <div class="order-number">
+        <i class="fas fa-receipt"></i>
+        <span>מספר ההזמנה: <strong>{{ orderNumber }}</strong></span>
+      </div>
+      <div class="success-actions">
+        <button class="btn btn-primary" (click)="goHome()">
+          <i class="fas fa-home"></i> חזרה לדף הבית
+        </button>
+        <button class="btn btn-secondary" (click)="backToOrder()">
+          <i class="fas fa-shopping-cart"></i> הזמנה חדשה
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- רכיב הפוטר -->
+<app-footer></app-footer>

@@ -1,0 +1,155 @@
+<!-- אינדיקטור טעינה -->
+<div *ngIf="isLoading" class="loading-container">
+  <div class="loading-spinner"></div>
+  <p>טוען את המנות מהשרת...</p>
+</div>
+
+<!-- הודעת שגיאה -->
+<div *ngIf="errorMessage && !isLoading" class="error-container">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<!-- סרגל ניווט העליון -->
+<app-navbar></app-navbar>
+
+<!-- כותרת העמוד -->
+<div class="order-header">
+  <div class="container">
+    <h1><i class="fas fa-shopping-cart"></i> הזמנת משלוח</h1>
+    <p class="subtitle">בחרו מנות, מלאו פרטים, ואנחנו בדרך אליכם!</p>
+  </div>
+</div>
+
+<div class="container order-page">
+  <div class="row">
+    <!-- חלק ימין: מנות -->
+    <div class="col-lg-8 col-md-7">
+      <div class="menu-section">
+        <div class="category-section" *ngFor="let cat of getCategories()">
+          <div class="category-header">
+            <h2 class="category-title">{{ cat }}</h2>
+            <div class="category-line"></div>
+          </div>
+
+          <div class="dishes-grid">
+            <div class="dish-card" *ngFor="let item of getDishesByCategory(cat)">
+              <div class="dish-image">
+                <img [src]="item.image_url" [alt]="item.name">
+              </div>
+              <div class="dish-content">
+                <div class="dish-info">
+                  <h3 class="dish-name">{{ item.name }}</h3>
+                  <p class="dish-description">{{ item.description }}</p>
+                  <span class="dish-price">{{ item.price }} ₪</span>
+                </div>
+
+                <div class="dish-actions">
+                  <div class="quantity-control">
+                    <button class="qty-btn minus" 
+                            (click)="decreaseDishQuantity(item.id)" 
+                            [disabled]="getDishQuantity(item.id) <= 0">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <span class="quantity">{{ getDishQuantity(item.id) }}</span>
+                    <button class="qty-btn plus" 
+                            (click)="increaseDishQuantity(item.id)">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                  <button class="add-to-cart-btn" 
+                          (click)="addToCart(item)" 
+                          [disabled]="getDishQuantity(item.id) <= 0">
+                    <i class="fas fa-cart-plus"></i>
+                    הוסף לעגלה
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- חלק שמאל: עגלה -->
+    <div class="col-lg-4 col-md-5">
+      <div class="order-summary-card">
+        <div class="summary-header">
+          <h2><i class="fas fa-shopping-bag"></i> סיכום הזמנה</h2>
+        </div>
+
+        <div class="cart-items" *ngIf="cart.length; else emptyCart">
+          <div class="cart-item" *ngFor="let item of cart">
+            <img [src]="item.image_url" [alt]="item.name" class="cart-item-image">
+            <div class="cart-item-details">
+              <h4>{{ item.name }}</h4>
+              <div class="cart-item-quantity">
+                {{ item.quantity }} × {{ item.price }} ₪
+              </div>
+            </div>
+            <button class="remove-btn" (click)="removeItem(item)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+
+        <ng-template #emptyCart>
+          <div class="empty-cart">
+            <i class="fas fa-shopping-cart"></i>
+            <p>העגלה ריקה</p>
+          </div>
+        </ng-template>
+
+        <div class="price-summary" *ngIf="cart.length">
+          <div class="price-row">
+            <span>סה"כ מוצרים:</span>
+            <span>{{ total }} ₪</span>
+          </div>
+          <div class="price-row">
+            <span>דמי משלוח:</span>
+            <span>{{ deliveryFee }} ₪</span>
+          </div>
+          <div class="price-row total-row">
+            <span>סה"כ לתשלום:</span>
+            <span>{{ totalWithDelivery }} ₪</span>
+          </div>
+        </div>
+
+        <!-- טופס משלוח -->
+        <div class="delivery-form">
+          <h3><i class="fas fa-truck"></i> פרטי משלוח</h3>
+          <form (ngSubmit)="goToPayment()">
+            <div class="input-group">
+              <i class="fas fa-user"></i>
+              <input type="text" [(ngModel)]="customerName" name="customerName" placeholder="שם מלא" required>
+            </div>
+
+            <div class="input-group">
+              <i class="fas fa-phone"></i>
+              <input type="tel" [(ngModel)]="phone" name="phone" placeholder="מספר טלפון" required>
+            </div>
+
+            <div class="input-group">
+              <i class="fas fa-map-marker-alt"></i>
+              <input type="text" [(ngModel)]="address" name="address" placeholder="כתובת משלוח" required>
+            </div>
+
+            <div class="input-group">
+              <i class="fas fa-comment"></i>
+              <textarea [(ngModel)]="notes" name="notes" placeholder="הערות למשלוח (אופציונלי)"></textarea>
+            </div>
+
+            <button class="checkout-btn" type="submit" [disabled]="!customerName || !phone || !address || cart.length === 0">
+              <i class="fas fa-credit-card"></i>
+              המשך לתשלום
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- רכיב הפוטר -->
+<app-footer></app-footer>

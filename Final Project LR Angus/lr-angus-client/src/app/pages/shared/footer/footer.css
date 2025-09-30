@@ -1,0 +1,45 @@
+/*עיצוב אזור פרטי הקשר*/
+.contact-info {
+    background-color: #2a1e1e;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 50px auto;
+    color: #f8e4c9;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.contact-info-item {
+    text-align: center;
+    margin: 10px 20px;
+}
+
+.contact-info-item i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #b07a5b;
+}
+
+.contact-info-item h3 {
+    color: #f8e4c9;
+    margin-bottom: 10px;
+}
+
+.contact-info-item p {
+    color: #f8e4c9;
+    margin: 5px 0;
+}
+
+/*עיצוב פוטר זכויות היוצרים*/
+footer {
+    background-color: #2a1e1e;
+    border-top: 3px solid #b07a5b;
+}
+
+footer p {
+    margin: 0;
+    color: #f8e4c9;
+}

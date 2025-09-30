@@ -1,0 +1,201 @@
+/*האזור העליון תמונת המסעדה והסיפור*/
+.hero {
+    position: relative;
+    height: 600px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #f8e4c9;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 2;
+    margin-right: 55%;
+    margin-left: 0;
+    max-width: 50%;
+    text-align: right;
+    align-self: flex-start;
+    margin-top: 20px;
+}
+
+.hero h6 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1px;
+}
+
+.logo-img {
+    max-width: 550px;
+    margin-top: 10px;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+    transition: transform 0.3s;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.restaurant-story {
+    position: absolute;
+    left: 10%;
+    top: 47%;
+    max-width: 35%;
+    padding: 10px;
+    background-color: rgba(42, 30, 30, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s;
+    color: #f8e4c9;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    border-left: 8px solid #b07a5b;
+}
+
+.restaurant-story:hover {
+    transform: scale(1.05);
+    background-color: rgba(44, 32, 32, 0.8);
+    box-shadow: 0 4px 8px rgba(200, 194, 194, 0.3);
+}
+
+.restaurant-story h2 {
+    color: #b07a5b;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.restaurant-story h6 {
+    line-height: 1.5;
+}
+
+.restaurant-story h3 {
+    color: #cba38c;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 1.5rem;
+}
+
+.btn-custom {
+    background-color: #b07a5b;
+    border: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #8f5e3a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* גלריית תמונות - עיצוב + אנימציה */
+.gallery-title {
+    color: #b07a5b;
+    font-weight: bold;
+    margin-bottom: 30px;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+.gallery-title::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    background-color: #b07a5b;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.image-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    margin: 50px 0;
+    position: relative;
+    height: 350px;
+}
+
+.image-carousel-wrapper {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    width: fit-content;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(50%);
+    }
+}
+
+.carousel-item {
+    min-width: 450px;
+    height: 300px;
+    margin: 0 15px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+.carousel-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/*אזור אפשרויות עיצוב כפתורים*/
+.branch-section {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #2a1e1e;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.branch-section h2 {
+    margin-bottom: 20px;
+    color: #b07a5b;
+}
+
+.branch-selection {
+    margin: 15px auto;
+}
+
+#branch-select {
+    padding: 10px 15px;
+    width: 200px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f8e4c9;
+    color: #3b2c2c;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#branch-select:hover {
+    background-color: #e8d4b9;
+}
+
+#branch-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #b07a5b;
+}

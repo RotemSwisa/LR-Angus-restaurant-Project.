@@ -1,0 +1,39 @@
+<!-- סרגל ניווט עליון -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="assets/img/LOGO2.png" alt="LR-ANGUS" class="navbar-logo">
+      <span id="branch-display" class="selected-branch" [style.display]="selectedBranch ? 'inline-block' : 'none'">
+        {{ selectedBranch ? 'סניף ' + selectedBranch : '' }}
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="fas fa-home"></i> בית
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/menu" routerLinkActive="active">
+            <i class="fas fa-utensils"></i> תפריט
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/order" routerLinkActive="active">
+            <i class="fas fa-truck"></i> הזמן משלוח
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/reservation" routerLinkActive="active">
+            <i class="far fa-calendar-alt"></i> הזמן מקום
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+

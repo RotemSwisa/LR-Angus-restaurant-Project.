@@ -1,0 +1,25 @@
+/*עיצוב הסרגל העליון*/
+.navbar-nav .nav-item i {
+    margin-left: 5px;
+}
+
+.selected-branch {
+    background-color: #b07a5b;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.navbar-logo {
+    height: 25px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.nav-link.active {
+    color: #d0b6a8 !important;
+    font-weight: bold;
+}
+

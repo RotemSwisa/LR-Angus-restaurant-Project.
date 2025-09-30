@@ -1,0 +1,415 @@
+:root {
+  --primary: #b07a5b;
+  --primary-dark: #8f5e3a;
+  --bg-dark: #1a1a1a;
+  --card-bg: #2d2d2d;
+  --section-bg: #2a1e1e;
+  --text-light: #f8e4c9;
+  --text-muted: #aaa;
+  --border: #444;
+  --success: #28a745;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* כותרת עליונה */
+.payment-header {
+  background-color: #2a1e1e;
+  padding: 50px 0;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #f8e4c9;
+  position: relative;
+}
+
+.payment-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to right, #3b2c2c, #b07a5b, #3b2c2c);
+}
+
+.payment-header h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #b07a5b;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* טופס תשלום */
+.payment-section {
+  background:#2a1e1e;
+  border: 1px solid #2a1e1e;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  color: var(--text-light);
+  box-shadow: var(--shadow);
+}
+
+.payment-section h3 {
+  color: var(--primary);
+  font-weight: bold;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+
+/* שדות טופס */
+.form-label {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-control {
+  background: #3b2c2c;
+  border: 2px solid #4c3b3b;
+  color: var(--text-light);
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(176, 122, 91, 0.3);
+  outline: none;
+  background: #4a3838;
+}
+
+/* כפתור תשלום */
+.btn-payment {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding: 18px 30px;
+  border-radius: 12px;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(176, 122, 91, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-payment:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-dark), #6d4428);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(176, 122, 91, 0.6);
+}
+
+.btn-payment:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* כרטיס סיכום הזמנה */
+.order-summary-card {
+  background: #2a1e1e;
+  border: 1px solid #2a1e1e;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 20px;
+}
+
+.summary-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.summary-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* פרטי המזמין */
+.customer-details-section {
+  padding: 20px;
+  border-bottom: 1px solid #4c3b3b;
+}
+
+.customer-details-section h4 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.customer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.info-item i {
+  color: var(--primary);
+  min-width: 16px;
+}
+
+.info-label {
+  font-weight: 600;
+  min-width: 60px;
+}
+
+.info-value {
+  color: var(--text-light);
+}
+
+/* פריטי הזמנה */
+.order-items-section {
+  padding: 20px;
+  border-bottom: 1px solid #4c3b3b;
+}
+
+.order-items-section h4 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.order-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: #3b2c2c;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.order-item:hover {
+  transform: translateX(-3px);
+}
+
+.item-image {
+  flex-shrink: 0;
+}
+
+.item-image img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--primary);
+}
+
+.item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-name {
+  font-weight: bold;
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.item-quantity {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.item-price {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* סיכום מחירים */
+.price-summary-section {
+  padding: 20px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 1rem;
+}
+
+.price-row.total-row {
+  border-top: 2px solid var(--primary);
+  margin-top: 10px;
+  padding-top: 15px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+
+/* מודאל הצלחה */
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(78, 70, 70, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.success-content {
+  background: #2a1e1e;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(161, 157, 157, 0.5);
+  animation: slideUp 0.3s ease;
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: var(--success);
+  margin-bottom: 20px;
+}
+
+.success-title {
+  color: var(--success);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.success-message {
+  color: var(--text-light);
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+.order-number {
+  background: #3b2c2c;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border: 2px solid var(--primary);
+}
+
+.order-number i {
+  color: var(--primary);
+  margin-left: 10px;
+}
+
+.success-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.success-actions .btn {
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.success-actions .btn-primary {
+  background:  #b07a5b;
+  color: white;
+}
+
+.success-actions .btn-primary:hover {
+  background: #6f5751;
+  transform: translateY(-2px);
+}
+
+.success-actions .btn-secondary {
+  background: #b07a5b;
+  color: white;
+}
+
+.success-actions .btn-secondary:hover {
+  background: #6f5751;
+  transform: translateY(-2px);
+}
+
+
+/* אנימציות */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .payment-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .order-summary-card {
+    position: static;
+    margin-top: 20px;
+  }
+  
+  .success-content {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+  
+  .success-actions {
+    flex-direction: column;
+  }
+  
+  .success-actions .btn {
+    width: 100%;
+  }
+}
