@@ -68,3 +68,17 @@ It was created as part of the Web Applications Development course in collaborati
 
 ## _License_
 This project was created for educational purposes as part of the Web Applications Development course.
+
+
+
+## _Some pictures from the restaurant website_
+<img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/2f4c0ad9-7196-48f5-8d96-0468cb5424ec" /> <img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/b19034a4-5ef3-4c88-98d9-b8d12a8b2b30" /> <img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/9914975a-eb31-4b1e-87ef-2b4018bb0f00" /> <img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/2bcb0f73-9a26-4e2b-8110-414387d3bc6a" /> <img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/67986772-350d-45bc-9e26-9798088a95d0" />  <img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/c394feca-4b52-43a4-9592-2c1f9edfe5ca" /> <img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/2e7cfa79-4b6b-488a-a2e5-391a70650dac" /> <img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/68622600-8112-4350-ab52-4043385d0792" />
+
+
+
+
+
+
+
+
+
